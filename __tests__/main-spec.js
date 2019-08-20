@@ -1,4 +1,4 @@
-const {isValid} = require('../main');
+const {isValid,generateMultiplyArray,printMultiplyTable} = require('../main');
 
 it ('should numbers be valid', ()=>{
     //given
@@ -19,19 +19,23 @@ it('should generated array with table items',()=>{
     var generatedArray = generateMultiplyArray(firstNumber, secondNumber);
 
     //then
-    expect(generatedArray[0][0],'2x2=4');
-    expect(generatedArray[0][0],'2x3=6');
-    expect(generatedArray[0][0],'3x3=9');
-})
-var generatedArray = [];
-var rows = [];
-generatedArray[0] = rows;
+    expect(generatedArray[0][0]).toBe('2x2=4');
+    expect(generatedArray[1][0]).toBe('2x3=6');
+    expect(generatedArray[1][1]).toBe('3x3=9');
+});
 
-[
-    ["2x2=4"],
-    ['2x3=6','3x3=9']
-]
+it ('should generate result string', () => {
+    //given
+    const array = [];
+    array[0] = [];
+    array[0][0] = "2*2=4";
 
+    //when
+    const result = printMultiplyTable(array);
+
+    //then
+    expect(result).toBe("2*2=4 \n");
+});
   
 // const createMultiplicationTable = require('../createMultiplicationTable');
 
